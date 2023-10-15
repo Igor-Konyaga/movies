@@ -1,16 +1,66 @@
+import { Routes, Route, NavLink } from 'react-router-dom';
+import { StyledAppContainer } from './App.styled';
+import { Home } from '../pages/Home/Home';
+import { Movies } from '../pages/Movies/Movies';
+
 export const App = () => {
+
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <StyledAppContainer>
+      <nav className="navigation">
+        <NavLink className="header-link" to="/">
+          Home
+        </NavLink>
+        <NavLink className="header-link" to="/movies">
+          Movies
+        </NavLink>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+      </Routes>
+    </StyledAppContainer>
   );
 };
+
+//   const fetchPopulalMovies = async () => {
+//     const {
+//       data: { results },
+//     } = await fetchTrendingMovies();
+
+//     console.log(results);
+//   };
+//   fetchPopulalMovies();
+
+//  const fetchSearchMovie = async () => {
+//    const {
+//      data: { results },
+//    } = await fetchQueryMovie('ray');
+
+//    console.log(results);
+//  };
+//  fetchSearchMovie();
+
+//   const movieDetails = async () => {
+//     const {data} = await fetchMovieDetails(290);
+
+//     console.log(data);
+//   };
+//   movieDetails();
+
+//   const movieActors = async () => {
+//     const {
+//       data: { cast, crew },
+//     } = await fetchMovieActors(1677);
+//   };
+//   movieActors();
+
+//   const movieReviews = async () => {
+//     const {
+//       data: { results },
+//     } = await fetchMovieReviews(420818);
+//     console.log('results: ', results);
+//   };
+//   movieReviews();
