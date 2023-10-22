@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { StyledSection } from './Movies.styled';
 import { fetchQueryMovie } from 'services/api';
 import { Form } from './Form/Form';
-import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 
 export const Movies = () => {
   const [query, setQuery] = useState(null);

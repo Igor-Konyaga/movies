@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
-import { StyledMovieSection } from './MovieDetails.styled';
+import { StyledMovieSection, StyledSection } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -62,16 +62,17 @@ export const MovieDetails = () => {
         )}
       </StyledMovieSection>
 
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-
-      <Outlet />
+      <StyledSection>
+        <ul className='movie-info-list'>
+          <li className='list-item'>
+            <Link className='link-item' to="cast">Cast</Link>
+          </li>
+          <li className='list-item'>
+            <Link className='link-item' to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
+      </StyledSection>
     </>
   );
 };
