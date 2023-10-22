@@ -7,8 +7,8 @@ export const StyledSection = styled.section`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 8px;
 
-  .title{
-	margin-bottom: 16px;
+  .title {
+    margin-bottom: 16px;
   }
 
   .movies-list {
@@ -25,11 +25,11 @@ export const StyledSection = styled.section`
 
     .movies-list-item {
       border-radius: 6px;
-		font-weight: 600;
+      font-weight: 600;
 
       &:hover,
       &:focus {
-			background-image: linear-gradient(to bottom right, #FD8451, #FFBD6F);
+        background-image: linear-gradient(to bottom right, #fd8451, #ffbd6f);
         color: #090909;
       }
     }
@@ -40,5 +40,6 @@ export const StyledSection = styled.section`
 
     text-decoration: none;
     color: inherit;
+
   }
 `;

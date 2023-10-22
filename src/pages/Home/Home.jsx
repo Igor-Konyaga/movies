@@ -36,7 +36,7 @@ export const Home = () => {
             return (
               <li key={id} className="movies-list-item">
                 <Link className="movies-list-link" to={`/movies/${id}`}>
-                {number}&#41; {title}
+                {number}&#41; <span className='orange'>{title}</span>
                 </Link>
               </li>
             );

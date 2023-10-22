@@ -3,7 +3,12 @@ import styled from 'styled-components';
 export const StyledMovieSection = styled.section`
   display: flex;
   gap: 20px;
-  padding: 20px 20px 0 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  background-color: #eaeaeaac;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
 
   .content {
     display: flex;
@@ -24,6 +29,10 @@ export const StyledMovieSection = styled.section`
 
   .title {
     margin-bottom: 20px;
+    font-size: 30px;
+
+    text-shadow: 2px 7px 5px rgba(0, 0, 0, 0.3),
+      0px -4px 10px rgba(255, 255, 255, 0.3);
   }
 
   .subtitle {
@@ -36,26 +45,24 @@ export const StyledMovieSection = styled.section`
 `;
 
 export const StyledSection = styled.section`
-  padding: 20px;
-
   .movie-info-list {
-	  display: flex;
-	  gap: 16px;
-	  padding: 16px 12px;
-	  
-	  font-size: 20px;
-	  font-weight: 600;
-	  list-style: none;
+    display: flex;
+    gap: 16px;
+    padding: 16px 12px;
+	 margin-bottom: 10px;
 
-	  background-color: #f3efef;
-	 box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-	 border-radius: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    list-style: none;
+
+    background-color: #eaeaeaac;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 8px;
 
     .link-item {
       display: inline-block;
       min-width: 60px;
-		padding: 0 8px;
-
+      padding: 0 8px;
 
       background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
       border: 0;
@@ -66,11 +73,10 @@ export const StyledSection = styled.section`
       font-size: 16px;
       font-weight: 500;
       line-height: 2.5;
-  
+
       text-align: center;
       text-decoration: none;
       transition: box-shadow 0.2s ease-in-out;
-   
 
       &:focus,
       &:hover {
