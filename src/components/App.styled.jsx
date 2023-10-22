@@ -27,7 +27,7 @@ export const StyledAppContainer = styled.div`
     }
 
     &.active {
-      color: green;
+      color: #eb9900;
     }
   }
 `;

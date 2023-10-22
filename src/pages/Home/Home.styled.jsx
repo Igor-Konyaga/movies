@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 
 export const StyledSection = styled.section`
-  padding: 0 20px;
+  padding: 16px 20px;
+
+  background-color: #eaeaeaac;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+
+  .title{
+	margin-bottom: 16px;
+  }
 
   .movies-list {
     display: flex;
@@ -9,30 +17,28 @@ export const StyledSection = styled.section`
     gap: 8px;
     width: 100%;
 
-    padding: 12px;
+    padding: 0;
     margin: 0;
-
-    background-color: #b1ebfb;
-    border-radius: 6px;
 
     list-style: none;
     font-size: 20px;
 
     .movies-list-item {
-      border-radius: 4px;
-      transition-duration: 300ms;
+      border-radius: 6px;
+		font-weight: 600;
 
-      &:hover {
-        background-color: #f0ffff9c;
+      &:hover,
+      &:focus {
+			background-image: linear-gradient(to bottom right, #FD8451, #FFBD6F);
+        color: #090909;
       }
     }
+  }
+  .movies-list-link {
+    padding: 6px 10px;
+    display: block;
 
-    .movies-list-link {
-      padding: 6px 10px;
-      display: block;
-
-      text-decoration: none;
-      color: inherit;
-    }
+    text-decoration: none;
+    color: inherit;
   }
 `;

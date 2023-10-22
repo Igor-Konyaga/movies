@@ -34,9 +34,9 @@ export const Home = () => {
           popularMovies.map(({ id, title }) => {
             number += 1;
             return (
-              <li className="movies-list-item">
-                <Link className="movies-list-link" to="" key={id}>
-                  {number}&#41; {title}
+              <li key={id} className="movies-list-item">
+                <Link className="movies-list-link" to={`/movies/${id}`}>
+                {number}&#41; {title}
                 </Link>
               </li>
             );
