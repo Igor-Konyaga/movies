@@ -30,7 +30,7 @@ export const StyledSection = styled.section`
       &:hover,
       &:focus {
         background-image: linear-gradient(to bottom right, #fd8451, #ffbd6f);
-        color: #090909;
+        color: #fbf9f9;
       }
     }
   }
