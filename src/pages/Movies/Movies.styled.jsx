@@ -6,8 +6,11 @@ export const StyledSection = styled.section`
   .movies-list {
     display: flex;
     flex-direction: column;
+    gap: 8px;
     width: 100%;
-    padding: 0 12px;
+
+    padding: 0;
+    margin: 0;
 
     background-color: #eaeaeaac;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -20,15 +23,15 @@ export const StyledSection = styled.section`
       border-radius: 6px;
       font-weight: 600;
 
-      padding: 6px 8px;
+		padding: 0 10px;
 
       cursor: pointer;
 
       &:first-child {
-        margin-top: 8px;
+        margin-top: 10px;
       }
       &:last-child {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
 
       &:hover,
@@ -36,6 +39,14 @@ export const StyledSection = styled.section`
         background-image: linear-gradient(to bottom right, #fd8451, #ffbd6f);
         color: #fbf9f9;
       }
+    }
+
+    .movies-list-link {
+      padding: 6px 10px;
+      display: block;
+
+      text-decoration: none;
+      color: inherit;
     }
   }
 `;

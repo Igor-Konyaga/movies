@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledMovieSection = styled.section`
   display: flex;
   gap: 20px;
-  padding: 20px;
+  padding: 14px 20px;
   margin-bottom: 10px;
 
   background-color: #eaeaeaac;
@@ -21,6 +21,32 @@ export const StyledMovieSection = styled.section`
   }
 
   .img-wrraper {
+    .btn {
+      display: inline-block;
+		margin-bottom: 4px;
+		padding: 6px 10px;
+
+      background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
+      border: 0;
+      border-radius: 12px;
+      color: #ffffff;
+      cursor: pointer;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+
+      text-align: center;
+      text-decoration: none;
+      transition: box-shadow 0.2s ease-in-out;
+
+      &:focus,
+      &:hover {
+        box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+          -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+          0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
+      }
+    }
     .img {
       max-width: 250px;
       border-radius: 8px;
@@ -49,7 +75,7 @@ export const StyledSection = styled.section`
     display: flex;
     gap: 16px;
     padding: 16px 12px;
-	 margin-bottom: 10px;
+    margin-bottom: 10px;
 
     font-size: 20px;
     font-weight: 600;

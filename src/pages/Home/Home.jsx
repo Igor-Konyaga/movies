@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 import { StyledSection } from './Home.styled';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Home = () => {
   const [popularMovies, setPopularMovies] = useState(null);
   const [error, setError] = useState(null);
+
+  let number = 0;
 
   useEffect(() => {
     fetchPopulalMovies();
@@ -24,7 +26,6 @@ export const Home = () => {
   };
 
   const validArr = Array.isArray(popularMovies) && popularMovies.length;
-  let number = 0;
 
   return (
     <StyledSection>
@@ -36,7 +37,7 @@ export const Home = () => {
             return (
               <li key={id} className="movies-list-item">
                 <Link className="movies-list-link" to={`/movies/${id}`}>
-                {number}&#41; <span className='orange'>{title}</span>
+                  {number}&#41; <span className="orange">{title}</span>
                 </Link>
               </li>
             );

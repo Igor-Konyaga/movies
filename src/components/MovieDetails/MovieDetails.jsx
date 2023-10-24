@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import { StyledMovieSection, StyledSection } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
+  const navigate = useNavigate();
 
   const [movieInfo, setMovieInfo] = useState(null);
 
@@ -22,6 +23,10 @@ export const MovieDetails = () => {
     movieDetails();
   }, [movieId]);
 
+  const handleClick = e => {
+    navigate('/', { replace: true });
+  };
+
   const validObj = movieInfo !== null;
 
   return (
@@ -30,6 +35,9 @@ export const MovieDetails = () => {
         {validObj && (
           <>
             <div className="img-wrraper">
+              <button onClick={handleClick} className="btn" type="button">
+                &#8592; Go back
+              </button>
               <img
                 className="img"
                 src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`}
@@ -63,12 +71,16 @@ export const MovieDetails = () => {
       </StyledMovieSection>
 
       <StyledSection>
-        <ul className='movie-info-list'>
-          <li className='list-item'>
-            <Link className='link-item' to="cast">Cast</Link>
+        <ul className="movie-info-list">
+          <li className="list-item">
+            <Link className="link-item" to="cast">
+              Cast
+            </Link>
           </li>
-          <li className='list-item'>
-            <Link className='link-item' to="reviews">Reviews</Link>
+          <li className="list-item">
+            <Link className="link-item" to="reviews">
+              Reviews
+            </Link>
           </li>
         </ul>
         <Outlet />
