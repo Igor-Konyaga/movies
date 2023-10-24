@@ -34,7 +34,7 @@ export const Reviews = () => {
           reviews.map(({ id, author, content }) => {
             return (
               <li className="list-reviews-item" key={id}>
-                <p className="list-reviews-author">{author}</p>
+                <p className="list-reviews-author">Author: {author}</p>
                 <p className="list-reviews-content">{content}</p>
               </li>
             );
