@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import { StyledMovieSection, StyledSection } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
+  console.log('location: ', location);
 
   const [movieInfo, setMovieInfo] = useState(null);
 
@@ -23,10 +33,6 @@ export const MovieDetails = () => {
     movieDetails();
   }, [movieId]);
 
-  const handleClick = e => {
-    navigate('/', { replace: true });
-  };
-
   const validObj = movieInfo !== null;
 
   return (
@@ -35,9 +41,10 @@ export const MovieDetails = () => {
         {validObj && (
           <>
             <div className="img-wrraper">
-              <button onClick={handleClick} className="btn" type="button">
+              <Link to={backLink} className="btn">
                 &#8592; Go back
-              </button>
+              </Link>
+
               <img
                 className="img"
                 src={`https://image.tmdb.org/t/p/w500${movieInfo.poster_path}`}

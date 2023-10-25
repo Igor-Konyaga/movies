@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { StyledSection } from './Movies.styled';
 import { fetchQueryMovie } from 'services/api';
 import { Form } from './Form/Form';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 export const Movies = () => {
-  const [query, setQuery] = useState(null);
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
-
+  const query = searchParams.get('name');
 
   let number = 0;
 
@@ -32,8 +32,6 @@ export const Movies = () => {
   }, [query]);
 
   const onSubmitForm = value => {
-    setQuery(value);
-
     setSearchParams({ name: value });
   };
 
@@ -46,7 +44,11 @@ export const Movies = () => {
             number += 1;
             return (
               <li key={id} className="movies-list-item">
-                <Link className="movies-list-link" to={`/movies/${id}`}>
+                <Link
+                  state={{ from: location }}
+                  className="movies-list-link"
+                  to={`/movies/${id}`}
+                >
                   {number}&#41; <span className="orange">{original_title}</span>
                 </Link>
               </li>
