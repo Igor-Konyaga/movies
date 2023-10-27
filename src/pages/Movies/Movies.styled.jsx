@@ -19,11 +19,20 @@ export const StyledSection = styled.section`
     list-style: none;
     font-size: 20px;
 
+    .loader {
+      justify-content: center;
+    }
+	 .error {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ef1616;
+  }
+
     .movies-list-item {
       border-radius: 6px;
       font-weight: 600;
 
-		padding: 0 10px;
+      padding: 0 10px;
 
       cursor: pointer;
 

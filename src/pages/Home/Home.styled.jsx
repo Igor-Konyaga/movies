@@ -7,6 +7,16 @@ export const StyledSection = styled.section`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 8px;
 
+  .error {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ef1616;
+  }
+
+  .loader {
+    justify-content: center;
+  }
+
   .title {
     margin-bottom: 16px;
   }
@@ -40,6 +50,5 @@ export const StyledSection = styled.section`
 
     text-decoration: none;
     color: inherit;
-
   }
 `;

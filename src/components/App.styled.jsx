@@ -5,6 +5,10 @@ export const StyledAppContainer = styled.div`
   padding: 0 15px 30px;
   margin: 0 auto;
 
+  .loader{
+	justify-content: center;
+  }
+
   .navigation {
     padding: 20px;
     margin-bottom: 15px;

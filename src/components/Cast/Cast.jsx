@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { StyledCastBlock } from './Cast.styled';
 import { fetchMovieActors } from 'services/api';
 import { useParams } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
 
 export const Cast = () => {
   const { movieId } = useParams();
 
   const [movieCast, setMovieCast] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!movieId) {
@@ -14,13 +17,19 @@ export const Cast = () => {
     }
 
     const movieActors = async () => {
-      const {
-        data: { cast },
-      } = await fetchMovieActors(movieId);
+      try {
+        setIsLoading(true);
 
-      setMovieCast(cast);
+        const {
+          data: { cast },
+        } = await fetchMovieActors(movieId);
 
-      console.log('cast: ', cast);
+        setMovieCast(cast);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     movieActors();
@@ -32,6 +41,20 @@ export const Cast = () => {
 
   return (
     <StyledCastBlock>
+      {error !== null && <p className="error">{error}</p>}
+      {isLoading && (
+        <TailSpin
+		  className="loader"
+		  height="60"
+		  width="60"
+		  color="#fd8451"
+		  ariaLabel="tail-spin-loading"
+		  radius="1"
+		  wrapperStyle={{}}
+		  wrapperClass="loader"
+		  visible={true}
+		/>
+      )}
       {validArr && (
         <ul className="list-cast">
           {movieCast.map(({ id, name, character, profile_path }) => {
@@ -48,10 +71,10 @@ export const Cast = () => {
                     alt={name}
                   />
                 </div>
-                <div className='list-cast-body'>
-					 <p className="list-cast-info">{name}</p>
-                <p>Character: {character}</p>
-					 </div>
+                <div className="list-cast-body">
+                  <p className="list-cast-info">{name}</p>
+                  <p>Character: {character}</p>
+                </div>
               </li>
             );
           })}

@@ -3,9 +3,13 @@ import { StyledSection } from './Movies.styled';
 import { fetchQueryMovie } from 'services/api';
 import { Form } from './Form/Form';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
@@ -19,13 +23,18 @@ export const Movies = () => {
     }
 
     const fetchSearchMovie = async () => {
-      const {
-        data: { results },
-      } = await fetchQueryMovie(query);
+      setIsLoading(true);
+      try {
+        const {
+          data: { results },
+        } = await fetchQueryMovie(query);
 
-      console.log(results);
-
-      setMovies(results);
+        setMovies(results);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchSearchMovie();
@@ -38,6 +47,19 @@ export const Movies = () => {
   return (
     <StyledSection>
       <Form onSumbit={onSubmitForm} />
+      {error !== null && <p className="error">{error}</p>}
+      {isLoading && (
+        <TailSpin
+          height="60"
+          width="60"
+          color="#fd8451"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass="loader"
+          visible={true}
+        />
+      )}
       <ul className="movies-list">
         {movies.length > 0 &&
           movies.map(({ original_title, id }) => {

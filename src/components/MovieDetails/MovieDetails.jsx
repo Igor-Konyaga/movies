@@ -8,16 +8,17 @@ import {
 } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import { StyledMovieSection, StyledSection } from './MovieDetails.styled';
+import { TailSpin } from 'react-loader-spinner';
 
 export const MovieDetails = () => {
+  const [movieInfo, setMovieInfo] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const { movieId } = useParams();
-  const navigate = useNavigate();
 
   const location = useLocation();
   const backLink = location.state?.from ?? '/';
-  console.log('location: ', location);
-
-  const [movieInfo, setMovieInfo] = useState(null);
 
   useEffect(() => {
     if (!movieId) {
@@ -25,9 +26,15 @@ export const MovieDetails = () => {
     }
 
     const movieDetails = async () => {
-      const { data } = await fetchMovieDetails(movieId);
-
-      setMovieInfo(data);
+      try {
+        setIsLoading(true);
+        const { data } = await fetchMovieDetails(movieId);
+        setMovieInfo(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     movieDetails();
@@ -37,6 +44,19 @@ export const MovieDetails = () => {
 
   return (
     <>
+      {error !== null && <p className="error">{error}</p>}
+      {isLoading && (
+        <TailSpin
+          height="60"
+          width="60"
+          color="#fd8451"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass="loader"
+          visible={true}
+        />
+      )}
       <StyledMovieSection>
         {validObj && (
           <>
@@ -77,21 +97,23 @@ export const MovieDetails = () => {
         )}
       </StyledMovieSection>
 
-      <StyledSection>
-        <ul className="movie-info-list">
-          <li className="list-item">
-            <Link className="link-item" to="cast">
-              Cast
-            </Link>
-          </li>
-          <li className="list-item">
-            <Link className="link-item" to="reviews">
-              Reviews
-            </Link>
-          </li>
-        </ul>
-        <Outlet />
-      </StyledSection>
+      {!isLoading && (
+        <StyledSection>
+          <ul className="movie-info-list">
+            <li className="list-item">
+              <Link className="link-item" to="cast">
+                Cast
+              </Link>
+            </li>
+            <li className="list-item">
+              <Link className="link-item" to="reviews">
+                Reviews
+              </Link>
+            </li>
+          </ul>
+          <Outlet />
+        </StyledSection>
+      )}
     </>
   );
 };
