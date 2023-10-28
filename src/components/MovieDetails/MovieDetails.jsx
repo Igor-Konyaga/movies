@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react';
-import {
-  Link,
-  Outlet,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import { StyledMovieSection, StyledSection } from './MovieDetails.styled';
 import { TailSpin } from 'react-loader-spinner';
