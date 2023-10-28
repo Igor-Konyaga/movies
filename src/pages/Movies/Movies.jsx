@@ -5,7 +5,7 @@ import { Form } from './Form/Form';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -80,3 +80,5 @@ export const Movies = () => {
     </StyledSection>
   );
 };
+
+export default Movies;
