@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 
 const Home = () => {
-  const [popularMovies, setPopularMovies] = useState(null);
+  const [popularMovies, setPopularMovies] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,7 +48,7 @@ const Home = () => {
         />
       )}
       <ul className="movies-list">
-        {validArr &&
+        {popularMovies.length > 0 &&
           popularMovies.map(({ id, title }) => {
             number += 1;
             return (
