@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 import { StyledSection } from './Home.styled';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
 
   let number = 0;
 
@@ -51,7 +52,10 @@ const Home = () => {
             number += 1;
             return (
               <li key={id} className="movies-list-item">
-                <Link className="movies-list-link" to={`/movies/${id}`}>
+                <Link
+                  className="movies-list-link"
+                  to={`/movies/${id}`}
+                >
                   {number}&#41; <span className="orange">{title}</span>
                 </Link>
               </li>
