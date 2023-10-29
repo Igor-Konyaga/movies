@@ -14,7 +14,7 @@ export const App = () => {
   return (
     <StyledAppContainer>
       <nav className="navigation">
-        <NavLink className="header-link" to="/">
+        <NavLink className="header-link" to="/goit-react-hw-05-movies">
           Home
         </NavLink>
         <NavLink className="header-link" to="/movies">
@@ -36,7 +36,7 @@ export const App = () => {
         }
       >
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/goit-react-hw-05-movies" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="/movies/:movieId/cast" element={<Cast />} />
