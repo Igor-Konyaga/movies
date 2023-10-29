@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 import { StyledSection } from './Home.styled';
-import { Link} from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 
 const Home = () => {
@@ -9,6 +9,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const location = useLocation();
 
   let number = 0;
 
@@ -53,6 +54,7 @@ const Home = () => {
             return (
               <li key={id} className="movies-list-item">
                 <Link
+                  state={{ from: location }}
                   className="movies-list-link"
                   to={`/movies/${id}`}
                 >
