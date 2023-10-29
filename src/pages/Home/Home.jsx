@@ -29,8 +29,6 @@ const Home = () => {
     }
   };
 
-  const validArr = Array.isArray(popularMovies) && popularMovies.length;
-
   return (
     <StyledSection>
       <h1 className="title">Trending Today</h1>
