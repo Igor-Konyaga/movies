@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
 import { StyledMovieSection, StyledSection } from './MovieDetails.styled';
@@ -12,7 +12,7 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
 
   const location = useLocation();
-  const backLink = location.state?.from ?? '/';
+  const backLink = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     if (!movieId) {
@@ -55,7 +55,7 @@ export const MovieDetails = () => {
         {validObj && (
           <>
             <div className="img-wrraper">
-              <Link to={backLink} className="btn">
+              <Link to={backLink.current} className="btn">
                 &#8592; Go back
               </Link>
 
